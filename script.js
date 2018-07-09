@@ -9,6 +9,11 @@ function changeColor() {
     return false;
 }
 
+function revertColor() {
+	this.style.backgroundColor = 'red';
+	return false;
+}
+
 function createGrid() { 
 
 	for(var j = 0; j < 16; j++) {
@@ -25,6 +30,7 @@ function createGrid() {
 	  		newSquare.setAttribute('id', divID);
   			newSquare.classList.add('flex-item');
   			newSquare.addEventListener('mouseover', changeColor);
+  			newSquare.addEventListener('mouseout', revertColor);
 	
   			var append = document.getElementById(containerID);
   			append.appendChild(newSquare);
