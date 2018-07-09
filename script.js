@@ -1,5 +1,14 @@
 document.body.onload = createGrid();
 
+var lastGridSquare = document.getElementById("container15-square15");
+console.log(lastGridSquare);
+lastGridSquare.addEventListener('mouseover', changeColor);
+
+function changeColor() {
+    this.style.backgroundColor = "black";
+    return false;
+}
+
 function createGrid() { 
 
 	for(var j = 0; j < 16; j++) {
@@ -11,11 +20,15 @@ function createGrid() {
 	gridContainer.appendChild(lineContainer);
 
 		for (var i = 0; i < 16; i++) {
-	  		var newDiv = document.createElement("div");
-  			newDiv.classList.add('flex-item');
+	  		var newSquare = document.createElement("div");
+	  		var divID = "container" + j + "-square" + i;
+	  		newSquare.setAttribute('id', divID);
+  			newSquare.classList.add('flex-item');
+  			newSquare.addEventListener('mouseover', changeColor);
 	
   			var append = document.getElementById(containerID);
-  			append.appendChild(newDiv);
+  			append.appendChild(newSquare);
   		}
   	}
 }
+
