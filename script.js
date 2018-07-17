@@ -1,8 +1,5 @@
-document.body.onload = createGrid();
-
-var lastGridSquare = document.getElementById("container15-square15");
-console.log(lastGridSquare);
-lastGridSquare.addEventListener('mouseover', changeColor);
+var gridSize = 17;
+document.body.onload = createGrid(gridSize);
 
 function changeColor() {
     this.style.backgroundColor = "black";
@@ -10,31 +7,53 @@ function changeColor() {
 }
 
 function revertColor() {
-	this.style.backgroundColor = 'red';
+	this.style.backgroundColor = 'tomato';
 	return false;
 }
 
-function createGrid() { 
 
-	for(var j = 0; j < 16; j++) {
-	var containerID = "container-" + j;
-	var lineContainer = document.createElement("div");
-	lineContainer.setAttribute("id", containerID);
-	lineContainer.classList.add("flex-container");
-	var gridContainer = document.getElementById("grid-container");
-	gridContainer.appendChild(lineContainer);
+function createGrid(size) { 
+	for (var j = 0; j < size; j++) {
+		var containerID = "container-" + j;
+		var lineContainer = document.createElement("div");
+		lineContainer.setAttribute("id", containerID);
+		lineContainer.classList.add("flex-container");
+		var gridContainer = document.getElementById("grid-container");
+		gridContainer.appendChild(lineContainer);
 
-		for (var i = 0; i < 16; i++) {
+		for (var i = 0; i < size; i++) {
 	  		var newSquare = document.createElement("div");
 	  		var divID = "container" + j + "-square" + i;
 	  		newSquare.setAttribute('id', divID);
   			newSquare.classList.add('flex-item');
   			newSquare.addEventListener('mouseover', changeColor);
-  			newSquare.addEventListener('mouseout', revertColor);
+  			//newSquare.addEventListener('mouseout', revertColor);
 	
   			var append = document.getElementById(containerID);
   			append.appendChild(newSquare);
   		}
   	}
+
+  	//console.log("okay about to remove elements");
+  	//element = document.getElementById("container0-square0");
+  	//console.log(element);
+  	//element.parentNode.removeChild(element);
+  	//element.parentNode.removeChild(element);
 }
 
+function clearGrid(gridSize) {
+
+	for(var j = 0; j < gridSize; j++) {
+		var containerID = "container-" + j;
+		var element = document.getElementById(containerID);
+		element.parentNode.removeChild(element);
+	}
+}
+
+function resetGrid() {
+
+	clearGrid(gridSize);
+	gridSize = prompt("What size would you like to the grid to be?");
+	console.log(gridSize);
+	//createGrid(gridSize);
+}
