@@ -34,11 +34,6 @@ function createGrid(size) {
   		}
   	}
 
-  	//console.log("okay about to remove elements");
-  	//element = document.getElementById("container0-square0");
-  	//console.log(element);
-  	//element.parentNode.removeChild(element);
-  	//element.parentNode.removeChild(element);
 }
 
 function clearGrid(gridSize) {
@@ -55,5 +50,5 @@ function resetGrid() {
 	clearGrid(gridSize);
 	gridSize = prompt("What size would you like to the grid to be?");
 	console.log(gridSize);
-	//createGrid(gridSize);
+	createGrid(gridSize);
 }
